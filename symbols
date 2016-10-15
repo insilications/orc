@@ -349,6 +349,7 @@ liborc-0.4.so.0:orc_x86_emit_cpuinsn_memoffset_reg
 liborc-0.4.so.0:orc_x86_emit_cpuinsn_none
 liborc-0.4.so.0:orc_x86_emit_cpuinsn_reg_memoffset
 liborc-0.4.so.0:orc_x86_emit_cpuinsn_reg_memoffset_8
+liborc-0.4.so.0:orc_x86_emit_cpuinsn_reg_memoffset_s
 liborc-0.4.so.0:orc_x86_emit_cpuinsn_size
 liborc-0.4.so.0:orc_x86_emit_cpuinsn_store_memoffset
 liborc-0.4.so.0:orc_x86_emit_dec_memoffset
