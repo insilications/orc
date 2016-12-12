@@ -4,7 +4,7 @@
 #
 Name     : orc
 Version  : 0.4.26
-Release  : 6
+Release  : 7
 URL      : https://gstreamer.freedesktop.org/src/orc/orc-0.4.26.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/orc/orc-0.4.26.tar.xz
 Summary  : Library of Optimized Inner Loops Runtime Compiler
@@ -14,6 +14,11 @@ Requires: orc-bin
 Requires: orc-lib
 Requires: orc-doc
 BuildRequires : docbook-xml
+BuildRequires : gcc-dev32
+BuildRequires : gcc-libgcc32
+BuildRequires : gcc-libstdc++32
+BuildRequires : glibc-dev32
+BuildRequires : glibc-libc32
 BuildRequires : gtk-doc
 BuildRequires : gtk-doc-dev
 BuildRequires : libxslt-bin
@@ -42,6 +47,16 @@ Provides: orc-devel
 dev components for the orc package.
 
 
+%package dev32
+Summary: dev32 components for the orc package.
+Group: Default
+Requires: orc-lib32
+Requires: orc-bin
+
+%description dev32
+dev32 components for the orc package.
+
+
 %package doc
 Summary: doc components for the orc package.
 Group: Documentation
@@ -58,14 +73,32 @@ Group: Libraries
 lib components for the orc package.
 
 
+%package lib32
+Summary: lib32 components for the orc package.
+Group: Default
+
+%description lib32
+lib32 components for the orc package.
+
+
 %prep
 %setup -q -n orc-0.4.26
+pushd ..
+cp -a orc-0.4.26 build32
+popd
 
 %build
 export LANG=C
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
+pushd ../build32/
+export CFLAGS="$CFLAGS -m32"
+export CXXFLAGS="$CXXFLAGS -m32"
+export LDFLAGS="$LDFLAGS -m32"
+%configure --disable-static   --libdir=/usr/lib32 --build=i686-generic-linux-gnu --host=i686-generic-linux-gnu --target=i686-clr-linux-gnu
+make V=1  %{?_smp_mflags}
+popd
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
@@ -75,6 +108,15 @@ make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
 rm -rf %{buildroot}
+pushd ../build32/
+%make_install32
+if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
+then
+pushd %{buildroot}/usr/lib32/pkgconfig
+for i in *.pc ; do mv $i 32$i ; done
+popd
+fi
+popd
 %make_install
 
 %files
@@ -128,6 +170,12 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/orc-0.4.pc
 /usr/share/aclocal/*.m4
 
+%files dev32
+%defattr(-,root,root,-)
+/usr/lib32/liborc-0.4.so
+/usr/lib32/liborc-test-0.4.so
+/usr/lib32/pkgconfig/32orc-0.4.pc
+
 %files doc
 %defattr(-,root,root,-)
 /usr/share/gtk-doc/html/orc/ch01.html
@@ -172,3 +220,10 @@ rm -rf %{buildroot}
 /usr/lib64/liborc-0.4.so.0.25.0
 /usr/lib64/liborc-test-0.4.so.0
 /usr/lib64/liborc-test-0.4.so.0.25.0
+
+%files lib32
+%defattr(-,root,root,-)
+/usr/lib32/liborc-0.4.so.0
+/usr/lib32/liborc-0.4.so.0.25.0
+/usr/lib32/liborc-test-0.4.so.0
+/usr/lib32/liborc-test-0.4.so.0.25.0
