@@ -4,7 +4,7 @@
 #
 Name     : orc
 Version  : 0.4.26
-Release  : 5
+Release  : 6
 URL      : https://gstreamer.freedesktop.org/src/orc/orc-0.4.26.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/orc/orc-0.4.26.tar.xz
 Summary  : Library of Optimized Inner Loops Runtime Compiler
@@ -123,8 +123,9 @@ rm -rf %{buildroot}
 /usr/include/orc-0.4/orc/orcvariable.h
 /usr/include/orc-0.4/orc/orcx86.h
 /usr/include/orc-0.4/orc/orcx86insn.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/liborc-0.4.so
+/usr/lib64/liborc-test-0.4.so
+/usr/lib64/pkgconfig/orc-0.4.pc
 /usr/share/aclocal/*.m4
 
 %files doc
@@ -167,4 +168,7 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/liborc-0.4.so.0
+/usr/lib64/liborc-0.4.so.0.25.0
+/usr/lib64/liborc-test-0.4.so.0
+/usr/lib64/liborc-test-0.4.so.0.25.0
