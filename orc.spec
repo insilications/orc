@@ -4,7 +4,7 @@
 #
 Name     : orc
 Version  : 0.4.26
-Release  : 7
+Release  : 8
 URL      : https://gstreamer.freedesktop.org/src/orc/orc-0.4.26.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/orc/orc-0.4.26.tar.xz
 Summary  : Library of Optimized Inner Loops Runtime Compiler
