@@ -1,4 +1,3 @@
-Configure miss: GTKDOC_DEPS
 Configure miss: sigsetjmp
 Configure miss: valgrind/valgrind.h usability
 Configure miss: valgrind/valgrind.h presence
@@ -9,7 +8,6 @@ Configure miss: i686-generic-linux-gnu-strip
 Configure miss: i686-generic-linux-gnu-mt
 Configure miss: whether a statically linked program can dlopen itself
 Configure miss: i686-generic-linux-gnu-pkg-config
-Configure miss: GTKDOC_DEPS
 Configure miss: sigsetjmp
 Configure miss: valgrind/valgrind.h usability
 Configure miss: valgrind/valgrind.h presence
