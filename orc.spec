@@ -6,7 +6,7 @@
 #
 Name     : orc
 Version  : 0.4.28
-Release  : 14
+Release  : 15
 URL      : https://gstreamer.freedesktop.org/src/orc/orc-0.4.28.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/orc/orc-0.4.28.tar.xz
 Source99 : https://gstreamer.freedesktop.org/src/orc/orc-0.4.28.tar.xz.asc
