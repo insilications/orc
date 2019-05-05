@@ -6,11 +6,11 @@
 #
 Name     : orc
 Version  : 0.4.29
-Release  : 17
+Release  : 18
 URL      : https://gstreamer.freedesktop.org/src/orc/orc-0.4.29.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/orc/orc-0.4.29.tar.xz
 Source99 : https://gstreamer.freedesktop.org/src/orc/orc-0.4.29.tar.xz.asc
-Summary  : Library of Optimized Inner Loops Runtime Compiler
+Summary  : Optimized Inner Loop Runtime Compiler
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: orc-bin = %{version}-%{release}
@@ -112,8 +112,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555460574
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1557096394
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -136,7 +142,7 @@ cd ../build32;
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1555460574
+export SOURCE_DATE_EPOCH=1557096394
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/orc
 cp COPYING %{buildroot}/usr/share/package-licenses/orc/COPYING
