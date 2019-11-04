@@ -1,5 +1,6 @@
-0.4.30
+0.4.31
 docbook-xml
 gtk-doc
 pkg-config
+util-linux
 valgrind
