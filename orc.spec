@@ -4,10 +4,10 @@
 #
 Name     : orc
 Version  : 0.4.31
-Release  : 21
+Release  : 22
 URL      : https://gstreamer.freedesktop.org/src/orc/orc-0.4.31.tar.xz
 Source0  : https://gstreamer.freedesktop.org/src/orc/orc-0.4.31.tar.xz
-Summary  : Optimized Inner Loop Runtime Compiler
+Summary  : Library of Optimized Inner Loops Runtime Compiler
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: orc-bin = %{version}-%{release}
@@ -22,7 +22,9 @@ BuildRequires : glib-dev
 BuildRequires : glibc-dev32
 BuildRequires : glibc-libc32
 BuildRequires : gtk-doc
+BuildRequires : pkg-config
 BuildRequires : util-linux
+BuildRequires : valgrind
 
 %description
 ORC - The Oil Runtime Compiler
@@ -44,7 +46,6 @@ Group: Development
 Requires: orc-lib = %{version}-%{release}
 Requires: orc-bin = %{version}-%{release}
 Provides: orc-devel = %{version}-%{release}
-Requires: orc = %{version}-%{release}
 Requires: orc = %{version}-%{release}
 
 %description dev
@@ -100,7 +101,6 @@ license components for the orc package.
 Summary: staticdev components for the orc package.
 Group: Default
 Requires: orc-dev = %{version}-%{release}
-Requires: orc-dev = %{version}-%{release}
 
 %description staticdev
 staticdev components for the orc package.
@@ -117,6 +117,7 @@ staticdev32 components for the orc package.
 
 %prep
 %setup -q -n orc-0.4.31
+cd %{_builddir}/orc-0.4.31
 pushd ..
 cp -a orc-0.4.31 build32
 popd
@@ -126,8 +127,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572879130
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1573192910
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -254,6 +254,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/gtk-doc/html/orc/orc-runninging.html
 /usr/share/gtk-doc/html/orc/orc-tutorial.html
 /usr/share/gtk-doc/html/orc/orc-x86.html
+/usr/share/gtk-doc/html/orc/orc.devhelp2
 /usr/share/gtk-doc/html/orc/right-insensitive.png
 /usr/share/gtk-doc/html/orc/right.png
 /usr/share/gtk-doc/html/orc/style.css
