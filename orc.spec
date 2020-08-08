@@ -155,7 +155,7 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 meson --libdir=lib64 --prefix=/usr --buildtype=plain -Ddefault_library=both  builddir
 ninja -v -C builddir
 
-ninja test -v -C builddir || :
+meson test -C builddir || :
 find builddir/ -type f -not -name '*.gcno' -delete -print
 export CFLAGS="${CFLAGS_USE}"
 export CXXFLAGS="${CXXFLAGS_USE}"

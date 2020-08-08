@@ -1,1 +1,1 @@
-ninja test -v -C builddir || :
+meson test -C builddir || :
