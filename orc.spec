@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : orc
 Version  : 0.4.31
-Release  : 25
+Release  : 26
 URL      : file:///insilications/build/clearlinux/packages/orc/orc-0.4.31.zip
 Source0  : file:///insilications/build/clearlinux/packages/orc/orc-0.4.31.zip
 Summary  : No detailed summary available
@@ -123,7 +123,7 @@ unset http_proxy
 unset https_proxy
 unset no_proxy
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1596889861
+export SOURCE_DATE_EPOCH=1596890220
 export GCC_IGNORE_WERROR=1
 ## altflags_pgo content
 ## pgo generate
@@ -152,7 +152,7 @@ export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
-meson --libdir=lib64 --prefix=/usr --buildtype=plain --buildtype=release -Ddefault_library=both  builddir
+meson --libdir=lib64 --prefix=/usr --buildtype=plain -Ddefault_library=both  builddir
 ninja -v -C builddir
 
 ninja test -v -C builddir || :
@@ -162,12 +162,12 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-meson --libdir=lib64 --prefix=/usr --buildtype=plain --buildtype=release -Ddefault_library=both  builddir
+meson --libdir=lib64 --prefix=/usr --buildtype=plain -Ddefault_library=both  builddir
 ninja -v -C builddir
 pushd ../build32/
-export CFLAGS="-g -O3 -march=native -fuse-linker-plugin -malign-data=cacheline -pipe"
-export CFLAGS="-g -O3 -march=native -fuse-linker-plugin -malign-data=cacheline -fvisibility-inlines-hidden -pipe"
-export LDFLAGS="-g -O3 -march=native -fuse-linker-plugin -malign-data=cacheline -pipe"
+export CFLAGS="-g -O3 -march=native -mtune=native -fuse-linker-plugin -malign-data=cacheline -pipe"
+export CFLAGS="-g -O3 -march=native -mtune=native -fuse-linker-plugin -malign-data=cacheline -fvisibility-inlines-hidden -pipe"
+export LDFLAGS="-g -O3 -march=native -mtune=native -fuse-linker-plugin -malign-data=cacheline -pipe"
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -176,7 +176,7 @@ export ASFLAGS="${ASFLAGS}${ASFLAGS:+ }--32"
 export CFLAGS="${CFLAGS}${CFLAGS:+ }-m32 -mstackrealign"
 export CXXFLAGS="${CXXFLAGS}${CXXFLAGS:+ }-m32 -mstackrealign"
 export LDFLAGS="${LDFLAGS}${LDFLAGS:+ }-m32 -mstackrealign"
-meson --libdir=lib32 --prefix=/usr --buildtype=plain --buildtype=release -Ddefault_library=both  builddir
+meson --libdir=lib32 --prefix=/usr --buildtype=plain -Ddefault_library=both  builddir
 ninja -v -C builddir
 popd
 
