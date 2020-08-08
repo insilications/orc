@@ -1,5 +1,5 @@
 PKG_NAME := orc
-URL = https://gstreamer.freedesktop.org/src/orc/orc-0.4.31.tar.xz
+URL = https://github.com/GStreamer/orc.git
 ARCHIVES = 
 
 include ../common/Makefile.common

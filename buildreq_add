@@ -1,4 +1,18 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
+buildreq-meson
+docbook-xml
+findutils
+gcc-dev32
+gcc-libgcc32
+gcc-libstdc++32
+glibc-dev32
+glibc-libc32
 glib-dev
-
+glib-dev32
+glib-staticdev
+glib-staticdev32
+gtk-doc
+pkg-config
+util-linux
+valgrind
