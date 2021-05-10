@@ -1,0 +1,7 @@
+-Ddefault_library=both
+-Dorc-test=enabled
+-Dbenchmarks=enabled
+-Dexamples=disabled
+-Dgtk_doc=disabled
+-Dtests=enabled
+-Dtools=enabled

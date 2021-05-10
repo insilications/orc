@@ -10,11 +10,8 @@ glibc-dev32
 glibc-libc32
 glib-dev
 glib-dev32
-glib-staticdev
-glib-staticdev32
 gtk-doc
 pkg-config
 util-linux
 util-linux-dev
-util-linux-staticdev
 valgrind
